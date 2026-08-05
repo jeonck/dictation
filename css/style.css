@@ -689,6 +689,21 @@ audio { width: 100%; }
 
 /* ── 통계 화면 ───────────────────────────────────────────────────────── */
 
+.backup-note {
+  margin: -12px 0 24px;
+  padding: 12px 14px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* 파일 입력을 감싼 label 을 버튼처럼 보이게 한다 */
+label.btn { cursor: pointer; display: inline-block; }
+label.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 .weak-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .weak-item { padding: 16px 18px; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
 .weak-top { display: flex; align-items: center; gap: 10px; }

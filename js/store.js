@@ -217,6 +217,93 @@ export function resetAll() {
   persist();
 }
 
-export function exportJSON() {
-  return JSON.stringify(state, null, 2);
+// ── 내보내기 / 가져오기 ───────────────────────────────────────────────
+//
+// 기록은 출처(origin)별 localStorage 에만 있으므로 브라우저나 기기를 바꾸면
+// 통째로 사라진다. 파일로 빼고 넣을 수 있게 해 둔다.
+
+const EXPORT_FORMAT = 'dictation-lab-backup';
+
+export function exportAll() {
+  return {
+    format: EXPORT_FORMAT,
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    origin: location.origin,
+    attempts: state.attempts,
+    settings: state.settings,
+    lessons: getUserLessons(),
+  };
+}
+
+export function exportFilename() {
+  const d = new Date();
+  const stamp = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
+    .map((n) => String(n).padStart(2, '0'))
+    .join('-');
+  return `dictation-backup-${stamp}.json`;
+}
+
+/**
+ * 백업 파일을 현재 기록에 병합한다. 덮어쓰지 않고 없는 것만 더한다.
+ * 같은 시도(문장 id + 시각)는 중복으로 보고 건너뛴다.
+ *
+ * @returns {{addedAttempts:number, skippedAttempts:number, addedLessons:number, updatedLessons:number}}
+ */
+export function importAll(data) {
+  if (!data || typeof data !== 'object') {
+    throw new Error('파일을 읽을 수 없습니다.');
+  }
+  if (data.format !== EXPORT_FORMAT || !Array.isArray(data.attempts)) {
+    throw new Error('이 앱에서 내보낸 백업 파일이 아닙니다.');
+  }
+
+  const key = (a) => `${a.sentenceId}|${a.ts}`;
+  const seen = new Set(state.attempts.map(key));
+
+  let addedAttempts = 0;
+  let skippedAttempts = 0;
+  for (const a of data.attempts) {
+    // 통계 계산이 기대하는 최소 형태를 갖췄는지 확인한다
+    if (!a || typeof a.sentenceId !== 'string' || typeof a.ts !== 'number' || typeof a.accuracy !== 'number') {
+      skippedAttempts += 1;
+      continue;
+    }
+    if (seen.has(key(a))) {
+      skippedAttempts += 1;
+      continue;
+    }
+    seen.add(key(a));
+    state.attempts.push({ ...a, mistakes: Array.isArray(a.mistakes) ? a.mistakes : [] });
+    addedAttempts += 1;
+  }
+
+  state.attempts.sort((a, b) => a.ts - b.ts);
+  if (state.attempts.length > MAX_ATTEMPTS) {
+    state.attempts = state.attempts.slice(-MAX_ATTEMPTS);
+  }
+  persist();
+
+  // 가져온 코스도 함께 복원한다 — 없으면 그 문장들의 기록이 이름 없는 항목이 된다
+  let addedLessons = 0;
+  let updatedLessons = 0;
+  if (Array.isArray(data.lessons)) {
+    const existing = getUserLessons();
+    const byId = new Map(existing.map((l) => [l.id, l]));
+
+    for (const lesson of data.lessons) {
+      if (!lesson?.id || !Array.isArray(lesson.sentences)) continue;
+      const current = byId.get(lesson.id);
+      if (!current) {
+        byId.set(lesson.id, lesson);
+        addedLessons += 1;
+      } else if ((lesson.createdAt || 0) > (current.createdAt || 0)) {
+        byId.set(lesson.id, lesson);
+        updatedLessons += 1;
+      }
+    }
+    persistLessons([...byId.values()].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)));
+  }
+
+  return { addedAttempts, skippedAttempts, addedLessons, updatedLessons };
 }

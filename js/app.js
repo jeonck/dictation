@@ -8,6 +8,14 @@ import { YouTubePlayer } from './youtube.js';
 import { buildSentences, extractVideoId, formatTime } from './captions.js';
 import * as store from './store.js';
 
+// 예전 github.io 주소로 들어오면 운영 도메인으로 넘긴다.
+// 학습 기록은 출처(origin) 단위로 저장되므로 두 주소를 섞어 쓰면 기록이 갈라진다.
+// 호스트명을 정확히 대조하므로 이 저장소를 포크해도 남의 도메인으로 튀지 않는다.
+const CANONICAL_HOST = 'dictation.metacog.co.kr';
+if (location.hostname === 'jeonck.github.io' && location.pathname.startsWith('/dictation')) {
+  location.replace(`https://${CANONICAL_HOST}/${location.hash}`);
+}
+
 const view = document.getElementById('view');
 const player = new Player();
 const recorder = new Recorder();
@@ -902,10 +910,39 @@ function renderStats() {
   const body = document.getElementById('stats-body');
 
   document.getElementById('btn-reset').addEventListener('click', () => {
-    if (!confirm('모든 학습 기록을 지웁니다. 되돌릴 수 없습니다. 계속할까요?')) return;
+    if (!confirm('모든 학습 기록을 지웁니다. 되돌릴 수 없습니다.\n먼저 내보내기로 백업해 두는 것을 권합니다.\n\n계속할까요?')) return;
     store.resetAll();
     toast('기록을 초기화했습니다.');
     renderStats();
+  });
+
+  document.getElementById('btn-export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(store.exportAll(), null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = store.exportFilename();
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('백업 파일을 내려받았습니다.');
+  });
+
+  const importInput = document.getElementById('btn-import');
+  importInput.addEventListener('change', async () => {
+    const file = importInput.files?.[0];
+    if (!file) return;
+    try {
+      const result = store.importAll(JSON.parse(await file.text()));
+      const parts = [`시도 ${result.addedAttempts}건 추가`];
+      if (result.skippedAttempts) parts.push(`중복 ${result.skippedAttempts}건 건너뜀`);
+      if (result.addedLessons) parts.push(`코스 ${result.addedLessons}개 복원`);
+      toast(parts.join(' · '));
+      renderStats();
+    } catch (err) {
+      toast(err instanceof SyntaxError ? 'JSON 형식이 아닙니다.' : err.message);
+    } finally {
+      importInput.value = ''; // 같은 파일을 다시 골라도 change 가 발생하도록
+    }
   });
 
   const stats = store.overallStats();
