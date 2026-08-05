@@ -21,7 +21,44 @@ python3 -m http.server 4173
 # → http://localhost:4173
 ```
 
-배포도 그대로 올리기만 하면 된다(GitHub Pages, Netlify, S3 등).
+## 배포
+
+**운영 주소: https://dictation.metacog.co.kr**
+
+GitHub Pages 로 서비스한다 (`jeonck/dictation`, `main` 브랜치 루트). 빌드 단계가 없어서
+저장소에 push 하면 1~2분 뒤 그대로 반영된다.
+
+### 커스텀 도메인
+
+DNS 에 CNAME 레코드 하나면 된다.
+
+```
+dictation.metacog.co.kr.  CNAME  jeonck.github.io.
+```
+
+저장소 루트의 `CNAME` 파일이 이 도메인을 선언한다. **이 파일을 지우면 커스텀 도메인이
+해제되므로 건드리지 말 것.** Let's Encrypt 인증서는 GitHub 이 자동 발급·갱신하고,
+HTTPS 강제(`https_enforced`)가 켜져 있어 http 요청은 301 로 https 에 리다이렉트된다.
+
+### 이 앱이 정적 호스팅과 잘 맞는 이유
+
+- 모든 경로가 상대경로라 루트 배포든 `/dictation/` 같은 **하위 경로 배포든 그대로 동작**한다
+- **해시 라우팅**(`#/lesson/l2`)이라 SPA 리라이트 설정이 필요 없다. `#` 뒤는 서버로 가지
+  않으므로 딥링크를 새로고침해도 404 가 나지 않는다
+- **HTTPS 가 필수다.** 섀도잉 녹음(`getUserMedia`)과 유튜브 IFrame API 모두 보안 컨텍스트를
+  요구한다
+- `.nojekyll` 로 Jekyll 처리를 건너뛴다
+
+### 주의
+
+- 저장소가 public 이라 코드는 공개된다. 학습 기록은 각자 브라우저의 localStorage 에만
+  있으므로 유출될 개인 정보는 없다
+- **학습 기록은 출처(origin) 단위로 저장된다.** `localhost`, `jeonck.github.io`,
+  `dictation.metacog.co.kr` 은 서로 다른 저장소를 쓴다. 도메인을 옮기면 이전 기록은
+  따라오지 않는다
+- 따라서 **도메인을 다시 바꾸면 그동안의 학습 기록에 접근할 수 없게 된다**
+
+Netlify·Cloudflare Pages·S3 도 똑같이 정적 파일만 올리면 된다.
 
 ## 조작
 
