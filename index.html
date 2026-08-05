@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dictation Lab — 들리는 만큼 말할 수 있습니다</title>
+<meta name="description" content="원어민 연음을 받아쓰며 청취 취약점을 진단하는 딕테이션 학습 도구" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🎧</text></svg>" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#/">
+    <span class="brand-mark">🎧</span>
+    <span class="brand-text">Dictation<em>Lab</em></span>
+  </a>
+  <nav class="topnav">
+    <a href="#/" data-nav="home">학습</a>
+    <a href="#/stats" data-nav="stats">취약점 분석</a>
+  </nav>
+</header>
+
+<main id="view"></main>
+
+<!-- ── 홈 ────────────────────────────────────────────────────────────── -->
+<template id="tpl-home">
+  <section class="hero">
+    <h1>안 들리는 게 아니라, <br />붙어서 들리는 겁니다.</h1>
+    <p class="hero-sub">
+      아는 단어인데 안 들렸던 이유는 원어민이 단어를 하나씩 발음하지 않기 때문입니다.
+      받아쓰기는 그 뭉쳐진 소리를 하나씩 분해해 주는 가장 확실한 방법입니다.
+    </p>
+    <div class="why-grid">
+      <article class="why-card">
+        <span class="why-num">01</span>
+        <h3>연음 파악</h3>
+        <p>단어 끝 자음이 다음 모음으로 넘어가는 실제 소리를 익힙니다. 아는 단어가 왜 안 들렸는지 알게 됩니다.</p>
+      </article>
+      <article class="why-card">
+        <span class="why-num">02</span>
+        <h3>취약점 개선</h3>
+        <p>틀린 단어를 관사·전치사·시제 같은 유형으로 자동 분류해, 반복해서 놓치는 약점을 수치로 보여줍니다.</p>
+      </article>
+      <article class="why-card">
+        <span class="why-num">03</span>
+        <h3>스피킹 향상</h3>
+        <p>정답 문장을 그대로 따라 말하고 녹음해 원음과 비교합니다. 정확한 소리 덩어리가 그대로 발화로 이어집니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="stat-strip" id="home-stats"></section>
+
+  <section class="block">
+    <h2 class="block-title">학습 코스</h2>
+    <div class="lesson-grid" id="lesson-grid"></div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <h2 class="block-title">내가 가져온 영상</h2>
+      <a class="btn btn-primary btn-sm" href="#/import">＋ 유튜브 자막 가져오기</a>
+    </div>
+    <div class="lesson-grid" id="user-lesson-grid"></div>
+  </section>
+</template>
+
+<!-- ── 연습 ──────────────────────────────────────────────────────────── -->
+<template id="tpl-practice">
+  <section class="practice">
+    <div class="practice-head">
+      <div>
+        <a class="back-link" href="#/">← 코스 목록</a>
+        <h2 id="practice-title"></h2>
+      </div>
+      <div class="progress-wrap">
+        <span id="progress-label" class="progress-label"></span>
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      </div>
+    </div>
+
+    <div id="video-wrap" class="video-wrap" hidden>
+      <div id="video-mount" class="video-mount"></div>
+      <div id="video-cover" class="video-cover">
+        <span>화면은 가려 두었습니다 — 소리에만 집중하세요</span>
+      </div>
+      <button id="btn-cover" class="cover-toggle" type="button" aria-pressed="true">영상 보기</button>
+    </div>
+
+    <div class="player-card">
+      <button id="btn-play" class="play-btn" type="button" aria-label="문장 듣기">
+        <span class="play-icon"></span>
+      </button>
+      <div class="player-meta">
+        <p class="player-hint">듣고 받아쓰세요. 다시 듣기는 <kbd>⌘/Ctrl</kbd> + <kbd>Enter</kbd></p>
+        <p class="player-count"><span id="replay-count">0</span>번 들었습니다</p>
+      </div>
+      <div class="speed-group" role="group" aria-label="재생 속도">
+        <button type="button" data-rate="0.5">0.5×</button>
+        <button type="button" data-rate="0.75">0.75×</button>
+        <button type="button" data-rate="1" class="is-active">1.0×</button>
+      </div>
+    </div>
+
+    <div class="answer-area">
+      <textarea id="answer" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off"
+        placeholder="들은 문장을 그대로 입력하세요…"></textarea>
+      <div id="hint-row" class="hint-row" hidden></div>
+      <div class="action-row">
+        <button id="btn-check" class="btn btn-primary" type="button">채점하기 <kbd>Enter</kbd></button>
+        <button id="btn-hint" class="btn btn-ghost" type="button">힌트</button>
+        <button id="btn-reveal" class="btn btn-ghost" type="button">정답 보기</button>
+      </div>
+    </div>
+
+    <div id="result" class="result" hidden></div>
+  </section>
+</template>
+
+<!-- ── 유튜브 자막 가져오기 ──────────────────────────────────────────── -->
+<template id="tpl-import">
+  <section class="import">
+    <div class="practice-head"><div>
+      <a class="back-link" href="#/">← 코스 목록</a>
+      <h2>유튜브 자막으로 코스 만들기</h2>
+    </div></div>
+
+    <ol class="steps">
+      <li>
+        <h3>영상 주소</h3>
+        <p class="step-desc">받아쓸 유튜브 영상의 주소를 붙여넣으세요. 재생은 유튜브 플레이어가 해당 구간만 반복합니다.</p>
+        <input id="imp-url" type="url" class="field" placeholder="https://www.youtube.com/watch?v=..." spellcheck="false" />
+        <p id="imp-url-state" class="field-state"></p>
+      </li>
+
+      <li>
+        <h3>자막 붙여넣기</h3>
+        <p class="step-desc">
+          유튜브 영상 아래 <b>더보기 → 스크립트 표시</b>에서 전체를 복사해 붙여넣으세요.
+          <code>.srt</code>·<code>.vtt</code> 자막 파일을 올려도 됩니다.
+        </p>
+        <textarea id="imp-text" class="field" rows="8" spellcheck="false"
+          placeholder="0:01&#10;I'll pick it up on my way out.&#10;0:04&#10;Take a look at this one first."></textarea>
+        <div class="action-row">
+          <label class="btn btn-ghost btn-sm">
+            자막 파일 열기
+            <input id="imp-file" type="file" accept=".srt,.vtt,.txt" hidden />
+          </label>
+          <span id="imp-file-name" class="mistake-note"></span>
+        </div>
+      </li>
+
+      <li>
+        <h3>문장 길이</h3>
+        <p class="step-desc">자막은 문장이 아니라 조각으로 끊겨 있어 다시 합칩니다. 자동 생성 자막처럼 문장부호가 없으면 이 길이를 기준으로 나눕니다.</p>
+        <div class="speed-group" id="imp-length" role="group" aria-label="문장 길이">
+          <button type="button" data-words="7">짧게</button>
+          <button type="button" data-words="11" class="is-active">보통</button>
+          <button type="button" data-words="16">길게</button>
+        </div>
+      </li>
+    </ol>
+
+    <div class="action-row">
+      <button id="imp-preview" class="btn btn-primary" type="button">미리보기</button>
+    </div>
+
+    <div id="imp-result" class="import-result" hidden></div>
+  </section>
+</template>
+
+<!-- ── 통계 ──────────────────────────────────────────────────────────── -->
+<template id="tpl-stats">
+  <section class="stats">
+    <div class="practice-head">
+      <div>
+        <a class="back-link" href="#/">← 코스 목록</a>
+        <h2>취약점 분석</h2>
+      </div>
+      <button id="btn-reset" class="btn btn-ghost btn-sm" type="button">기록 초기화</button>
+    </div>
+    <div id="stats-body"></div>
+  </section>
+</template>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
