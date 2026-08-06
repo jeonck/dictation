@@ -86,6 +86,108 @@ export const LESSONS = [
           { span: 'couple of', tip: "couple_of → '커플러'. of가 [ə]로 줄어 앞 단어에 붙습니다." },
         ],
       },
+      {
+        id: 'l1-9',
+        text: 'Turn it off when you leave.',
+        ko: '나갈 때 그거 꺼줘.',
+        linking: [
+          { span: 'Turn it off', tip: "Tur-n_i-t_off → '터니롭'. n이 it으로, t가 off로 넘어가며 세 단어가 한 덩어리가 됩니다." },
+        ],
+      },
+      {
+        id: 'l1-10',
+        text: 'I left it in the car.',
+        ko: '차에 두고 왔어.',
+        linking: [
+          { span: 'left it in', tip: "lef-t_i-t_in → '레프티린'. t가 모음 사이에서 [ɾ]로 약해집니다." },
+          { span: 'in the', tip: 'in the → n과 th가 이어지며 the가 거의 안 들립니다.' },
+        ],
+      },
+      {
+        id: 'l1-11',
+        text: 'Hold on a second, I almost forgot.',
+        ko: '잠깐만, 나 깜빡할 뻔했네.',
+        linking: [
+          { span: 'Hold on a', tip: "Hol-d_on_a → '홀도너'. d가 on으로 넘어가고 a는 완전히 흡수됩니다." },
+          { span: 'almost forgot', tip: 'almost forgot → t가 f 앞에서 파열되지 않아 사라집니다.' },
+        ],
+      },
+      {
+        id: 'l1-12',
+        text: 'Can you keep an eye on my bag?',
+        ko: '내 가방 좀 봐줄래?',
+        linking: [
+          { span: 'keep an eye on', tip: "kee-p_an_eye_on → '키퍼나이온'. 네 단어가 끊김 없이 이어집니다." },
+        ],
+      },
+      {
+        id: 'l1-13',
+        text: 'She picked up an accent living abroad.',
+        ko: '그 사람 외국 살면서 억양이 배었어.',
+        linking: [
+          { span: 'picked up an', tip: "picke-d_u-p_an → '픽떠번'. -ed는 [t]로 나고 p가 an으로 넘어갑니다." },
+          { span: 'accent living', tip: 'accent living → t가 l 앞에서 파열되지 않습니다.' },
+        ],
+      },
+      {
+        id: 'l1-14',
+        text: "Let's talk about it over lunch.",
+        ko: '점심 먹으면서 그 얘기 하자.',
+        linking: [
+          { span: 'about it over', tip: "abou-t_i-t_over → '어바우리로버'. t 두 개가 모두 [ɾ]로 약화됩니다." },
+        ],
+      },
+      {
+        id: 'l1-15',
+        text: 'I ran into an old friend downtown.',
+        ko: '시내에서 옛 친구를 우연히 만났어.',
+        linking: [
+          { span: 'ran into an old', tip: "ran_in-to_an_old → '래니너너올드'. into의 t가 n 뒤에서 탈락합니다." },
+        ],
+      },
+      {
+        id: 'l1-16',
+        text: 'Put on a jacket before you go out.',
+        ko: '나가기 전에 재킷 입어.',
+        linking: [
+          { span: 'Put on a', tip: "Pu-t_on_a → '푸로너'. t가 [ɾ]로 약해지고 a까지 한 호흡에 이어집니다." },
+          { span: 'go out', tip: "go_out → '고아웃'. 모음끼리 만나 [w] 연결음이 생깁니다." },
+        ],
+      },
+      {
+        id: 'l1-17',
+        text: 'He walked in as I was leaving.',
+        ko: '내가 나가려는데 그 사람이 들어왔어.',
+        linking: [
+          { span: 'walked in as', tip: "walke-d_in_as → '워크디너즈'. -ed [t]가 in으로 넘어가고 as의 s는 [z]로 납니다." },
+        ],
+      },
+      {
+        id: 'l1-18',
+        text: 'Would you mind waiting for a moment?',
+        ko: '잠깐만 기다려 주시겠어요?',
+        linking: [
+          { span: 'Would you', tip: "Would you → '우쥬'. d + y가 [dʒ]로 융합됩니다." },
+          { span: 'for a moment', tip: "for_a → '퍼러'. 관사 a가 앞에 흡수됩니다." },
+        ],
+      },
+      {
+        id: 'l1-19',
+        text: 'The bus should be here in a minute.',
+        ko: '버스 곧 올 거야.',
+        linking: [
+          { span: 'here in a', tip: "here_in_a → '히어리너'. r 소리가 연결고리가 되어 세 단어가 붙습니다." },
+        ],
+      },
+      {
+        id: 'l1-20',
+        text: "I'll fill it up on the way home.",
+        ko: '가는 길에 기름 넣을게.',
+        linking: [
+          { span: 'fill it up', tip: "fi-ll_i-t_up → '필리럽'. l이 it으로, t가 up으로 넘어갑니다." },
+          { span: 'on the way', tip: 'on the → n과 th가 이어지며 the가 [ðə]로 약해집니다.' },
+        ],
+      },
     ],
   },
 
@@ -172,6 +274,114 @@ export const LESSONS = [
           { span: 'make it', tip: "make_it → '메이킷'. k가 it으로 넘어갑니다." },
         ],
       },
+      {
+        id: 'l2-9',
+        text: 'What are you going to do about it?',
+        ko: '그거 어떻게 할 거야?',
+        linking: [
+          { span: 'What are you', tip: "What are you → '워러유'. are가 [ər]로 줄고 what의 t는 [ɾ]가 됩니다." },
+          { span: 'going to', tip: "going to → '거너'(gonna)." },
+        ],
+      },
+      {
+        id: 'l2-10',
+        text: "I've got to run, I'll call you later.",
+        ko: '나 가봐야 해, 나중에 전화할게.',
+        linking: [
+          { span: 'got to', tip: "got to → '가라'(gotta). t가 [ɾ]로 약화됩니다." },
+          { span: 'call you', tip: "call you → '콜유'. l이 y로 부드럽게 이어집니다." },
+        ],
+      },
+      {
+        id: 'l2-11',
+        text: 'Do you want to grab something to eat?',
+        ko: '뭐 좀 먹으러 갈래?',
+        linking: [
+          { span: 'Do you want to', tip: "Do you want to → '쥬워너'. do you가 [dʒə]로, want to가 wanna로 줄어듭니다." },
+          { span: 'something to eat', tip: 'something to → th 뒤의 to가 [tə]로 약해지고 g는 거의 안 들립니다.' },
+        ],
+      },
+      {
+        id: 'l2-12',
+        text: 'He must have forgotten about the meeting.',
+        ko: '그 사람 회의를 잊은 게 분명해.',
+        linking: [
+          { span: 'must have', tip: "must have → '머스터브'. have가 [əv]로 약화되고 t가 [ɾ]가 됩니다." },
+          { span: 'forgotten about the', tip: "forgotten_about the → '퍼가른어바우더'. tt가 성문음으로 막혀 소리가 끊깁니다." },
+        ],
+      },
+      {
+        id: 'l2-13',
+        text: "Why don't you come over after work?",
+        ko: '퇴근하고 우리 집에 오지 그래?',
+        linking: [
+          { span: "Why don't you", tip: "Why don't you → '와이돈츄'. t + y가 [tʃ]로 융합됩니다." },
+          { span: 'come over after', tip: "come_over_after → '커모버래프터'. m과 r이 각각 다음 모음으로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l2-14',
+        text: 'I could have sworn I left it right here.',
+        ko: '분명히 여기 뒀는데.',
+        linking: [
+          { span: 'could have', tip: "could have → '쿠러브'(coulda). of로 잘못 듣기 쉬운 대표 구간입니다." },
+          { span: 'left it right', tip: "lef-t_it → '레프팃'. right의 t는 h 앞에서 사라집니다." },
+        ],
+      },
+      {
+        id: 'l2-15',
+        text: "Are you sure you don't need any help?",
+        ko: '진짜 도움 필요 없어?',
+        linking: [
+          { span: 'Are you', tip: "Are you → '아유'. are가 [ər]로 약해져 거의 안 들립니다." },
+          { span: "don't need", tip: "don't need → '돈니드'. t가 n 앞에서 완전히 탈락합니다." },
+        ],
+      },
+      {
+        id: 'l2-16',
+        text: "She's supposed to be here by now.",
+        ko: '그 사람 지금쯤 와 있어야 하는데.',
+        linking: [
+          { span: 'supposed to', tip: "supposed to → '서포스투'. d가 t에 흡수되어 [səpoʊstə]가 됩니다." },
+          { span: 'be here', tip: 'be here → h가 약해져 두 단어가 붙습니다.' },
+        ],
+      },
+      {
+        id: 'l2-17',
+        text: "Let's get out of here before it gets busy.",
+        ko: '붐비기 전에 나가자.',
+        linking: [
+          { span: 'get out of here', tip: "ge-t_ou-t_of_here → '게라우러히어'. t 두 개가 연달아 [ɾ]로 약화됩니다." },
+          { span: 'before it', tip: "before_it → '비포릿'. r이 it으로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l2-18',
+        text: "I don't want to bother you, but I need a favor.",
+        ko: '귀찮게 하고 싶진 않은데, 부탁이 하나 있어.',
+        linking: [
+          { span: "don't want to", tip: "don't want to → '돈워너'. t가 두 번 모두 탈락합니다." },
+          { span: 'need a favor', tip: "nee-d_a → '니더'. d가 a로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l2-19',
+        text: 'What is he talking about?',
+        ko: '그 사람 무슨 소리 하는 거야?',
+        linking: [
+          { span: 'What is he', tip: "What is he → '왓시'. h가 탈락하고 is와 he가 한 음절로 뭉쳐집니다." },
+          { span: 'talking about', tip: 'talking_about → g가 about으로 넘어가고 -ing는 [ɪn]으로도 발음됩니다.' },
+        ],
+      },
+      {
+        id: 'l2-20',
+        text: "You've got a lot of work ahead of you.",
+        ko: '앞으로 할 일이 많네.',
+        linking: [
+          { span: "You've got a lot of", tip: "You've go-t_a lo-t_of → '유브가러라러브'. t가 연달아 [ɾ]로 약화되어 통째로 뭉개집니다." },
+          { span: 'ahead of you', tip: "ahead of you → '어헤더뷰'. d가 of로 넘어가고 of you가 붙습니다." },
+        ],
+      },
     ],
   },
 
@@ -250,6 +460,112 @@ export const LESSONS = [
         linking: [
           { span: 'looked at me', tip: "looke-d_at me → '룩터미'. -ed는 [t]로 발음되고 at과 이어집니다." },
           { span: 'for a second', tip: "for_a → '퍼러'. 관사 a가 완전히 흡수됩니다." },
+        ],
+      },
+      {
+        id: 'l3-9',
+        text: "I'll meet you in front of the station.",
+        ko: '역 앞에서 만나자.',
+        linking: [
+          { span: 'in front of the', tip: "in front of the → '인프런어더'. front의 t가 탈락하고 of the가 [əvðə]로 뭉개집니다." },
+        ],
+      },
+      {
+        id: 'l3-10',
+        text: 'She put the keys on the kitchen counter.',
+        ko: '그 사람이 열쇠를 부엌 조리대에 뒀어.',
+        linking: [
+          { span: 'put the', tip: 'put the → t가 th에 흡수되어 한 번만 소리납니다.' },
+          { span: 'on the kitchen', tip: "on the → '온더'. the가 [ðə]로 극도로 약해집니다." },
+        ],
+      },
+      {
+        id: 'l3-11',
+        text: 'We waited for a table for about an hour.',
+        ko: '한 시간쯤 자리를 기다렸어.',
+        linking: [
+          { span: 'waited for a', tip: "waite-d for_a → '웨이릿퍼러'. -ed의 [ɪd]와 for a가 한 덩어리가 됩니다." },
+          { span: 'about an hour', tip: "abou-t_an_hour → '어바우러나워'. hour의 h는 묵음이라 an과 바로 이어집니다." },
+        ],
+      },
+      {
+        id: 'l3-12',
+        text: "He's been at the office since early this morning.",
+        ko: '그 사람 오늘 아침 일찍부터 사무실에 있었어.',
+        linking: [
+          { span: 'at the office', tip: 'at the → t가 th에 먹혀 사라지고 the도 거의 안 들립니다.' },
+          { span: 'since early', tip: "since_early → '신설리'. s가 early로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l3-13',
+        text: "There's a note on the door for you.",
+        ko: '문에 너한테 남긴 쪽지 있어.',
+        linking: [
+          { span: "There's a note", tip: "There'-s_a → '데어저'. s가 [z]로 유성음화되며 a와 붙습니다." },
+          { span: 'on the door for you', tip: 'for you → [fərjə]로 줄어 거의 안 들립니다.' },
+        ],
+      },
+      {
+        id: 'l3-14',
+        text: 'I heard about it from a friend of mine.',
+        ko: '내 친구한테서 그 얘기 들었어.',
+        linking: [
+          { span: 'about it from a', tip: "abou-t_it from_a → '어바우릿프러머'. from a가 [frəmə]로 붙습니다." },
+          { span: 'friend of mine', tip: "frien-d_of → '프렌더브'. d가 of로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l3-15',
+        text: 'Can you drop me off at the corner?',
+        ko: '모퉁이에서 내려줄 수 있어?',
+        linking: [
+          { span: 'drop me off at the', tip: "drop me of-f_at the → '드랍미오팻더'. p가 m 앞에서 파열되지 않고, f가 at으로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l3-16',
+        text: 'The keys are in the drawer next to the sink.',
+        ko: '열쇠는 싱크대 옆 서랍에 있어.',
+        linking: [
+          { span: 'keys are in the', tip: "key-s_are_in the → '키저린더'. s가 [z]로 나며 are와 이어집니다." },
+          { span: 'next to the', tip: 'next to the → 자음이 겹쳐 t가 하나만 발음됩니다.' },
+        ],
+      },
+      {
+        id: 'l3-17',
+        text: 'She works for a company in the middle of downtown.',
+        ko: '그 사람은 시내 한복판에 있는 회사에서 일해.',
+        linking: [
+          { span: 'for a company', tip: "for_a → '퍼러'. 관사 a를 놓치기 쉽습니다." },
+          { span: 'in the middle of', tip: "in the middle of → '인더미들러브'. middle의 dd는 [ɾ]이고 of는 [əv]로 줄어듭니다." },
+        ],
+      },
+      {
+        id: 'l3-18',
+        text: 'I just need a break from all of this.',
+        ko: '이 모든 것에서 좀 쉬고 싶을 뿐이야.',
+        linking: [
+          { span: 'need a break', tip: "nee-d_a → '니더'. d가 a로 넘어갑니다." },
+          { span: 'from all of this', tip: "from_all_of → '프러몰러브'. m이 all로, l이 of로 연달아 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l3-19',
+        text: 'He left a message on my desk this morning.',
+        ko: '그 사람이 오늘 아침 내 책상에 메모를 남겼어.',
+        linking: [
+          { span: 'left a message', tip: "lef-t_a → '레프터'. t가 a로 넘어갑니다." },
+          { span: 'on my desk', tip: 'on my → n이 m 앞에서 [m]에 가깝게 동화됩니다.' },
+        ],
+      },
+      {
+        id: 'l3-20',
+        text: "We're out of milk and out of time.",
+        ko: '우유도 떨어졌고 시간도 없어.',
+        linking: [
+          { span: 'out of milk', tip: "ou-t_of → '아우러브'. t가 [ɾ]로 약해지고 of가 붙습니다." },
+          { span: 'and out of time', tip: "and → '언'[ən]으로 줄어 앞뒤에 붙습니다." },
         ],
       },
     ],
@@ -332,6 +648,114 @@ export const LESSONS = [
           { span: 'call me back', tip: 'call me → l이 m 앞에서 뭉개집니다.' },
         ],
       },
+      {
+        id: 'l4-9',
+        text: 'She has already sent the files twice.',
+        ko: '그 사람 벌써 파일을 두 번이나 보냈어.',
+        linking: [
+          { span: 'has already', tip: "has already → '해절레디'. 회화에서는 she's로 축약되어 완료 시제 단서가 흐려집니다." },
+          { span: 'sent the files', tip: 'sent the → t가 th에 흡수됩니다. 그래도 files의 s는 반드시 표기해야 합니다.' },
+        ],
+      },
+      {
+        id: 'l4-10',
+        text: "They've been working on it for months.",
+        ko: '그들은 몇 달째 그걸 하고 있어.',
+        linking: [
+          { span: "They've been", tip: "They've been → '데이븐'. 've가 거의 안 들려 완료 시제를 놓치기 쉽습니다." },
+          { span: 'on it for months', tip: "on_it → '오닛'. months의 끝 -ths는 [s]에 가깝게 뭉개지지만 복수 표기는 살려야 합니다." },
+        ],
+      },
+      {
+        id: 'l4-11',
+        text: 'He watches the same shows every night.',
+        ko: '그 사람은 매일 밤 똑같은 프로를 봐.',
+        linking: [
+          { span: 'watches the', tip: "watches the → '와치저'. -es가 [ɪz]로 한 음절 더 붙습니다. 3인칭 s를 놓치기 쉬운 자리입니다." },
+          { span: 'shows every', tip: "show-s_every → '쇼우제브리'. s가 [z]로 나며 every로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l4-12',
+        text: 'I forgot to mention it earlier.',
+        ko: '아까 말한다는 걸 깜빡했어.',
+        linking: [
+          { span: 'forgot to', tip: 'forgot to → t가 겹쳐 하나만 발음됩니다. 과거형인지 놓치기 쉽습니다.' },
+          { span: 'mention it earlier', tip: "mention_it_earlier → '멘셔니럴리어'. n이 it으로, t가 [ɾ]로 이어집니다." },
+        ],
+      },
+      {
+        id: 'l4-13',
+        text: 'Nobody knows what happened last night.',
+        ko: '어젯밤에 무슨 일이 있었는지 아무도 몰라.',
+        linking: [
+          { span: 'knows what', tip: "know-s_what → '노우즈왓'. 3인칭 s가 [z]로 납니다." },
+          { span: 'happened last', tip: 'happened last → -ed [d]가 l 앞에서 파열되지 않아 사라집니다.' },
+        ],
+      },
+      {
+        id: 'l4-14',
+        text: 'The lights were already turned off.',
+        ko: '불은 이미 꺼져 있었어.',
+        linking: [
+          { span: 'lights were', tip: 'lights were → -ts 뒤에 w가 와서 복수 s가 뭉개집니다.' },
+          { span: 'turned off', tip: "turne-d_off → '터언돕'. -ed [d]가 off로 넘어갑니다. 수동태 단서입니다." },
+        ],
+      },
+      {
+        id: 'l4-15',
+        text: 'It takes about twenty minutes by train.',
+        ko: '기차로 이십 분쯤 걸려.',
+        linking: [
+          { span: 'takes about', tip: "take-s_about → '테익서바웃'. 3인칭 s가 about으로 넘어갑니다." },
+          { span: 'twenty minutes', tip: "twenty → '트웨니'. n 뒤의 t가 탈락합니다. minutes의 복수 s는 살려야 합니다." },
+        ],
+      },
+      {
+        id: 'l4-16',
+        text: 'We have already talked about this twice.',
+        ko: '우리 이거 벌써 두 번 얘기했잖아.',
+        linking: [
+          { span: 'have already', tip: "have already → '애브럴레디'. we've로 축약되면 h가 완전히 사라집니다." },
+          { span: 'talked about this', tip: "talke-d_about → '토크터바웃'. -ed가 [t]로 나며 about으로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l4-17',
+        text: 'She said she had finished the report.',
+        ko: '그 사람이 보고서를 끝냈다고 했어.',
+        linking: [
+          { span: 'she had finished', tip: "she had → '쉬드'(she'd). had가 [d]만 남아 과거완료임을 놓치기 쉽습니다." },
+          { span: 'finished the', tip: '-ed [t]가 th에 흡수되어 시제 단서가 거의 사라집니다.' },
+        ],
+      },
+      {
+        id: 'l4-18',
+        text: 'Everyone agrees it needs more work.',
+        ko: '다들 손볼 게 더 있다는 데 동의해.',
+        linking: [
+          { span: 'agrees it', tip: "agree-s_it → '어그리짓'. 3인칭 s가 [z]로 나며 it으로 넘어갑니다." },
+          { span: 'needs more', tip: 'needs more → -ds 뒤에 m이 와서 s가 짧게 스칩니다. 두 곳 모두 s를 써야 합니다.' },
+        ],
+      },
+      {
+        id: 'l4-19',
+        text: "He hasn't answered any of my messages.",
+        ko: '그 사람 내 메시지에 하나도 답을 안 했어.',
+        linking: [
+          { span: "hasn't answered", tip: "hasn't → '해즌'. t가 탈락해 부정형인지 놓치기 쉽습니다." },
+          { span: 'answered any of', tip: "answere-d_any_of → '앤서더니어브'. -ed가 any로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l4-20',
+        text: 'The kids left their bags in the hallway.',
+        ko: '애들이 복도에 가방을 두고 갔어.',
+        linking: [
+          { span: 'kids left', tip: 'kids left → -ds 뒤에 l이 와서 복수 s가 뭉개집니다.' },
+          { span: 'their bags in the', tip: "bag-s_in the → '백진더'. 복수 s가 [z]로 나며 in으로 넘어갑니다." },
+        ],
+      },
     ],
   },
 
@@ -411,6 +835,113 @@ export const LESSONS = [
         linking: [
           { span: 'running a little', tip: "running_a li-ttle → '러닝어리를'. little의 tt는 [ɾ]입니다." },
           { span: "let's wrap it up", tip: "wra-p_i-t_up → '래피럽'. p와 t가 연달아 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l5-9',
+        text: "I'll let you know as soon as I hear anything.",
+        ko: '뭔가 들리는 대로 바로 알려줄게.',
+        linking: [
+          { span: 'let you know', tip: "let you → '레츄'. t + y가 [tʃ]로 융합됩니다." },
+          { span: 'as soon as I', tip: "as soon a-s_I → '애순어자이'. as의 s가 [z]로 나며 I로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l5-10',
+        text: "That's about all I can tell you right now.",
+        ko: '지금 말해줄 수 있는 건 그 정도야.',
+        linking: [
+          { span: 'about all I can', tip: "abou-t_all_I can → '어바우롤아이컨'. t가 [ɾ]로 약해지고 can은 [kən]으로 줄어듭니다." },
+          { span: 'tell you right now', tip: 'tell you → l이 y로 이어지고, right의 t는 n 앞에서 사라집니다.' },
+        ],
+      },
+      {
+        id: 'l5-11',
+        text: 'Do you want me to wait for you outside?',
+        ko: '밖에서 기다릴까?',
+        linking: [
+          { span: 'Do you want me to', tip: "Do you want me to → '쥬워미러'. want의 t가 탈락하고 to는 [tə]로 약화됩니다." },
+          { span: 'wait for you', tip: 'wait for you → t가 f 앞에서 파열되지 않고 for you는 [fərjə]로 줄어듭니다.' },
+        ],
+      },
+      {
+        id: 'l5-12',
+        text: "It doesn't really matter to me either way.",
+        ko: '나는 어느 쪽이든 상관없어.',
+        linking: [
+          { span: "doesn't really", tip: "doesn't → '더즌'. t가 r 앞에서 탈락합니다." },
+          { span: 'matter to me', tip: "matter → '매러'. tt가 [ɾ]로 약화되고 to me가 붙습니다." },
+        ],
+      },
+      {
+        id: 'l5-13',
+        text: "I'm not sure that's such a good idea.",
+        ko: '그게 좋은 생각인지 잘 모르겠어.',
+        linking: [
+          { span: 'not sure', tip: 'not sure → t가 s 앞에서 탈락해 부정인지 놓치기 쉽습니다.' },
+          { span: 'such a good idea', tip: "such_a goo-d_idea → '서처굿아이디어'. d가 idea로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l5-14',
+        text: 'We should probably get going before it rains.',
+        ko: '비 오기 전에 슬슬 가는 게 좋겠어.',
+        linking: [
+          { span: 'should probably', tip: "should probably → '슈프라블리'. d가 p 앞에서 사라지고 probably는 두 음절로 줄어듭니다." },
+          { span: 'before it rains', tip: "before_it → '비포릿'. r이 it으로 넘어가고 rains의 s는 [z]입니다." },
+        ],
+      },
+      {
+        id: 'l5-15',
+        text: 'Can we pick this up again tomorrow morning?',
+        ko: '이거 내일 아침에 이어서 해도 될까?',
+        linking: [
+          { span: 'pick this up again', tip: "pick this u-p_again → '픽디서겐'. p가 again으로 넘어갑니다." },
+        ],
+      },
+      {
+        id: 'l5-16',
+        text: "I didn't catch what you said just now.",
+        ko: '방금 뭐라고 했는지 못 들었어.',
+        linking: [
+          { span: "didn't catch", tip: "didn't → '디른'. t가 탈락하고 n만 남습니다." },
+          { span: 'what you said', tip: "what you → '왓츄'. t + y가 [tʃ]로 융합됩니다." },
+        ],
+      },
+      {
+        id: 'l5-17',
+        text: 'There has got to be a better way to do this.',
+        ko: '이거 더 나은 방법이 분명 있을 텐데.',
+        linking: [
+          { span: 'There has got to be a', tip: "There's got to be a → '데어즈가러비어'. got to가 gotta로 줄고 a까지 이어집니다." },
+          { span: 'better way', tip: "better → '베러'. tt가 [ɾ]로 약화됩니다." },
+        ],
+      },
+      {
+        id: 'l5-18',
+        text: "He'll be back in a couple of minutes.",
+        ko: '그 사람 몇 분 뒤면 돌아와.',
+        linking: [
+          { span: "He'll be back in a", tip: "back_in_a → '배키너'. k가 in으로, n이 a로 연달아 넘어갑니다." },
+          { span: 'couple of minutes', tip: "couple of → '커플러'. of가 [ə]로 줄어 붙습니다." },
+        ],
+      },
+      {
+        id: 'l5-19',
+        text: "I wouldn't worry about it too much.",
+        ko: '나라면 그렇게까지 걱정 안 할 것 같아.',
+        linking: [
+          { span: "wouldn't worry", tip: "wouldn't → '우든'. t가 w 앞에서 탈락합니다." },
+          { span: 'about it too', tip: "abou-t_it → '어바우릿'. t가 [ɾ]로 약화되고 too의 t와 겹칩니다." },
+        ],
+      },
+      {
+        id: 'l5-20',
+        text: 'Thanks for getting back to me so quickly.',
+        ko: '이렇게 빨리 답 줘서 고마워.',
+        linking: [
+          { span: 'Thanks for', tip: "Thanks for → '땡스퍼'. for가 [fər]로 약해집니다." },
+          { span: 'getting back to me', tip: "getting → '게린'. tt가 [ɾ]가 되고 back to는 t 하나만 발음됩니다." },
         ],
       },
     ],
