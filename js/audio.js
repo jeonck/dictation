@@ -149,7 +149,7 @@ export class Player {
 function pickDefaultVoice(voices) {
   if (!voices.length) return null;
   const preferred = [
-    /Samantha/i, /Ava/i, /Allison/i, /Google US English/i,
+    /Google US English/i, /Samantha/i, /Ava/i, /Allison/i,
     /Microsoft (Aria|Jenny|Guy)/i, /Alex/i, /Daniel/i,
   ];
   for (const re of preferred) {
