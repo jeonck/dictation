@@ -6,6 +6,7 @@ import { analyzeMistakes, tallyByCategory, categoryLabel, categoryHint, CATEGORI
 import { Player, Recorder } from './audio.js';
 import { YouTubePlayer } from './youtube.js';
 import { buildSentences, extractVideoId, formatTime } from './captions.js';
+import { EXAMPLE } from './data/example-caption.js';
 import * as store from './store.js';
 
 // 예전 github.io 주소로 들어오면 운영 도메인으로 넘긴다.
@@ -760,6 +761,26 @@ function renderImport() {
 
   let targetWords = 11;
 
+  const tabs = [...document.querySelectorAll('.imp-tabs button')];
+  function setTab(name) {
+    for (const b of tabs) b.classList.toggle('is-active', b.dataset.tab === name);
+    if (name === 'example') {
+      el.url.value = EXAMPLE.url;
+      el.text.value = EXAMPLE.captions;
+      el.url.dispatchEvent(new Event('input'));
+      preview();
+    } else {
+      el.url.value = '';
+      el.text.value = '';
+      el.fileName.textContent = '';
+      el.urlState.textContent = '';
+      el.result.hidden = true;
+      el.result.replaceChildren();
+      el.url.focus();
+    }
+  }
+  for (const b of tabs) b.addEventListener('click', () => setTab(b.dataset.tab));
+
   el.url.addEventListener('input', () => {
     const id = extractVideoId(el.url.value);
     el.urlState.textContent = el.url.value.trim()
@@ -900,7 +921,7 @@ function renderImport() {
     return short ? `${short}…` : `YouTube ${videoId}`;
   }
 
-  el.url.focus();
+  setTab('example');
 }
 
 // ── 통계 ──────────────────────────────────────────────────────────────
