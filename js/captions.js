@@ -282,12 +282,16 @@ export function segmentIntoSentences(cues, opts = {}) {
     }
   }
 
-  // 자막 타이밍은 실제 발화보다 조금 늦거나 이르게 찍히므로 앞뒤에 여유를 준다
-  return merged.map((s) => ({
-    text: s.text.trim(),
-    start: Math.max(0, s.start - 0.25),
-    end: s.end + 0.35,
-  }));
+  // 자막 타이밍은 실제 발화보다 조금 늦거나 이르게 찍히므로 앞뒤에 여유를 준다.
+  // 스크립트 패널 자막엔 끝 시각이 없어 end=다음 줄 시작이라, 그 사이 침묵·피드백까지
+  // 딸려 재생된다. 받아쓰기는 한 문장만 들려야 하므로 말 길이에 맞춰 상한을 둔다.
+  // ponytail: 0.7s/word 휴리스틱 — 실제 발화는 보통 이보다 빠르다. 너무 짧게 잘리면 상향.
+  return merged.map((s) => {
+    const text = s.text.trim();
+    const start = Math.max(0, s.start - 0.25);
+    const cap = start + text.split(/\s+/).length * 0.7 + 1.0;
+    return { text, start, end: Math.min(s.end + 0.35, cap) };
+  });
 }
 
 /** 붙여넣은 자막 → 바로 학습 가능한 문장 목록 */
