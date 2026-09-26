@@ -780,3 +780,5 @@ label.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px;
 }
 
 .imp-tabs { margin-bottom: 24px; }
+
+.method-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
