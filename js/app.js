@@ -490,6 +490,39 @@ function renderPractice(lesson) {
 
     bindShadowing(el.result, current());
     el.result.querySelector('[data-act="replay"]')?.addEventListener('click', () => playCurrent());
+
+    // 스피킹 5번: 원음 → 같은 길이의 말할 틈 → 반복. 다시 누르면 중지.
+    // 버튼이 화면에서 사라지면(다음 문장·다시 풀기·이동) 루프도 스스로 멈춘다.
+    const speakBtn = el.result.querySelector('[data-act="speak5"]');
+    const speakStatus = el.result.querySelector('[data-role="speak-status"]');
+    let drill = 0;
+    const resetSpeak = (msg = '') => {
+      speakBtn.classList.remove('is-active');
+      speakBtn.textContent = '🗣 스피킹 5번';
+      speakStatus.textContent = msg;
+    };
+    speakBtn?.addEventListener('click', async () => {
+      const id = ++drill;
+      if (!speakBtn.classList.toggle('is-active')) {
+        player.stop();
+        yt?.stop();
+        resetSpeak();
+        return;
+      }
+      speakBtn.textContent = '■ 중지';
+      const alive = () => id === drill && speakBtn.isConnected;
+      for (let i = 1; i <= 5; i++) {
+        speakStatus.textContent = `${i}/5 듣기…`;
+        const t0 = performance.now();
+        await playCurrent({ countsAsReplay: false });
+        if (!alive()) return;
+        // ponytail: 말할 틈 = 재생 길이 × 1.3 + 1초. 짧으면 계수만 올리면 된다.
+        speakStatus.textContent = `${i}/5 🗣 따라 말하세요`;
+        await new Promise((r) => setTimeout(r, (performance.now() - t0) * 1.3 + 1000));
+        if (!alive()) return;
+      }
+      resetSpeak('5번 완료!');
+    });
     el.result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
@@ -691,6 +724,8 @@ function renderAnswerBlock(sentence) {
       ${links ? `<ul class="linking-list" style="margin-top:16px">${links}</ul>` : ''}
       <div class="shadow-row" style="margin-top:16px">
         <button class="btn btn-ghost btn-sm" data-act="replay">원음 다시 듣기</button>
+        <button class="btn btn-ghost btn-sm" data-act="speak5">🗣 스피킹 5번</button>
+        <span data-role="speak-status" class="mistake-note"></span>
       </div>
     </div>`;
 }
